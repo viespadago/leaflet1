@@ -1,40 +1,73 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
+
 	<title>Exercici Leaflet 1 - Coordenades</title>
+
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+
    crossorigin=""/>
+
    <style type="text/css">
+
    	#mapid { height: 540px; }
+
    </style>
+
    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+
    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+
    crossorigin=""></script>
 
+
+
 </head>
+
 <body>
+
 	<div id="mapid"></div>
- 
+
+
  <script type="text/javascript">
- 	var map = L.map('mapid').setView([41.387, 2.17], 17);
+
+ 	var map = L.map('mapid').setView([41.387, 2.17], 16);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
 }).addTo(map);
+
  </script>
+
  <script type="text/javascript">
+
    var popup = L.popup();
 
 function onMapClick(e) {
+
+  map.setZoom(18);
+
     popup
+
         .setLatLng(e.latlng)
-        .setContent("Mis coordenadas son " + e.latlng.toString())
-        .openOn(mymap);
+
+        .setContent("Mis coordenadas son:<br> <b>Lat: " + e.latlng.lat.toString() + " Lng: " + e.latlng.lng.toString() + "</b>" )
+
+        .openOn(map);
+
 }
 
-mymap.on('click', onMapClick);
- </script>
+map.on('click', onMapClick);
+
+</script>
+
 
 </body>
+
 </html>
